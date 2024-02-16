@@ -3,6 +3,10 @@ cmake_minimum_required(VERSION 3.27)
 set(PATCH_VERSION "1" CACHE INTERNAL "My Patch version")
 set(PROJECT_VERSION 0.0.${PATCH_VERSION})
 
+# эти две строки для тестирования содержимого при компиляции
+set(SOME_VARIABLE 0)
+message("SOME VARIABLE = ${SOME_VARIABLE}")
+
 project(cpp_medium01 VERSION ${PROJECT_VERSION})
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
