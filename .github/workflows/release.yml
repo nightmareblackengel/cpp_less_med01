@@ -37,7 +37,8 @@ jobs:
 #          upload_url: ${{ steps.create_release.outputs.upload_url }}
 #          asset_path: ./helloworld_cli-0.0.${{ github.ruw_number }}-Linux.deb
 #          asset_name: helloworld_cli-0.0.${{ github.run_number }}-Linux.deb
-          upload_url: ${{ steps.get_release_url.outputs.URL }}
+#          asset_content_type: application/vnd.debian.binary-package
+#          upload_url: ${{ steps.get_release_url.outputs.URL }}
           asset_path: ${{ steps.prepare_artifact_metadata.outputs.ARTIFACT_PATH }}
           asset_name: ${{ steps.prepare_artifact_metadata.outputs.ARTIFACT_NAME }}
-          asset_content_type: application/vnd.debian.binary-package
+          asset_content_type: application/gzip
