@@ -57,3 +57,21 @@ else ()
     )
 endif()
 
+# процедура формирования Пакета
+# функционал INSTALL (без лишнего)
+# создаст bin и положит туда helloworld_cli.exe
+install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
+# встроенный генератор debian-пакетов
+set(CPACK_GENERATOR DEB)
+
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+
+set(CPACK_PACKAGE_CONTACT example@ex.com)
+# генератор debian пакетов
+include(CPack)
+# возможность запускать тесты (с учетом платформозависимости)
+enable_testing()
+
+add_test(test_version test_version)
