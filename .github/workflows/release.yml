@@ -35,6 +35,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./helloworld_cli-0.0.${{ github.ruw_number }}-Linux.deb
-          asset_name: helloworld_cli-0.0.${{ github.run_number }}-Linux.deb
+#          asset_path: ./helloworld_cli-0.0.${{ github.ruw_number }}-Linux.deb
+#          asset_name: helloworld_cli-0.0.${{ github.run_number }}-Linux.deb
+          asset_path: ${{ steps.prepare_artifact_metadata.outputs.ARTIFACT_PATH }}
+          asset_name: ${{ steps.prepare_artifact_metadata.outputs.ARTIFACT_NAME }}
           asset_content_type: application/vnd.debian.binary-package
