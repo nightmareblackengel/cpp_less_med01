@@ -9,6 +9,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    outputs:
+      version: ${{ steps.step_version.outputs.version }}
+      upload_url: ${{ steps.step_upload_url.outputs.upload_url }}
+
     steps:
       - uses: actions/checkout@v2
         with:
@@ -18,6 +23,14 @@ jobs:
       - run: cmake --build .
       - run: cmake --build . --target test
       - run: cmake --build . --target package
+
+      - name: MyStepVersion
+        id: step_version
+        run: echo "::set-output name=version::${{ steps.package_version.outputs.version }}"
+      - name: MyStepUploadUrl
+        id: step_upload_url
+        run: echo "::set-output name=upload_url::${{ steps.create_release.outputs.upload_url }}"
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
