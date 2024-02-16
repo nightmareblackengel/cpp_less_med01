@@ -30,7 +30,7 @@ jobs:
           prerelease: false
       - name: Upload My Release Asset
         id: upload-my-release-asset
-        uses: actions/upload-my-release-asset@v1
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
